@@ -1,62 +1,68 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
 import List from './List';
+
+
 
 var data = [
   {
     Comuna: 'Maipu',
     Direccion: 'Calle falsa #123',
     Peso:'2 Kg',
-    Cliente:'Mr Bean Frijolito'
+    Cliente:'Mr Bean Frijolito',
+    completed: true
   },
   {
     Comuna: 'Pudahuel',
     Direccion: 'Avenida siempre viva #123',
     Peso:'1.2 Kg',
-    Cliente:'Perico los palotes'
+    Cliente:'Perico los palotes',
+    completed: false
   },
   {
     Comuna: 'Maipu',
     Direccion: 'Av. Longitudinal #234',
     Peso:'0.5 Kg',
-    Cliente:'Nombre generico'
+    Cliente:'Nombre generico',
+    completed: false
   }
 ];
 
-var data1 = [
-  {
-    url: 'https://newmedia.thomson.co.uk/live/vol/3/b678f9d04c49b11b09fda3244da5bbe65bf586d7/658x370/web/ASIAFAREASTTHAILANDTHAILANDDES_000423.jpg',
-    caption: 'Hong Kong!'
-  },
-  {
-    url: 'https://newmedia.thomson.co.uk/live/vol/3/b678f9d04c49b11b09fda3244da5bbe65bf586d7/658x370/web/ASIAFAREASTTHAILANDTHAILANDDES_000423.jpg',
-    caption: 'Cows'
-  },
-  {
-    url: 'https://newmedia.thomson.co.uk/live/vol/3/b678f9d04c49b11b09fda3244da5bbe65bf586d7/658x370/web/ASIAFAREASTTHAILANDTHAILANDDES_000423.jpg',
-    caption: 'Scooters'
-  }
-];
-
-const numbers = [111, 222, 333, 444, 555];
 
 class App extends Component {
+
+  constructor(props) {
+  super(props);
+
+}
   render() {
+    const { sto, onIncrement, onDecrement } = this.props
     return (
+
       <div className="App">
         <div className="App-header">
-          <h3>Mis Retiros</h3>
+
+          <div className="col-md-8 col-sm-8 " >
+              <h3>Mis Retiros </h3>
+          </div>
+          <div className="col-md-4 col-sm-4" >
+              <h3><button type="button" className="btn btn-info btn-md"> Completados <span className="badge">{sto}</span></button> </h3>
+          </div>
+
         </div>
 
         <div className="App-body">
 
-          <List value={data}/>
+          <List value={data} store={this.props.sto} onIncrement={this.props.onIncrement}
+          onDecrement={() => sto.dispatch({ type: 'DECREMENT' })}/>
 
         </div>
+
       </div>
-    );
+    )
   }
 }
+
+
 
 export default App;

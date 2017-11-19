@@ -5,7 +5,7 @@
 
 .App-header {
   background-color: #222;
-  height: 50px;
+  height: 80px;
   padding: 5px;
   color: white;
 }
@@ -24,4 +24,11 @@ ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+
+.btn-success:hover, .btn-success:active, .btn-success:focus {
+  color: #fff !important;
+  background-color: 	#989898 !important;
+  border-color: 	#989898 !important;
 }
